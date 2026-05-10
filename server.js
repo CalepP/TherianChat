@@ -18,13 +18,3 @@ db.run(`CREATE TABLE IF NOT EXISTS mensajes (
   hora     TEXT
 )`);
 
-// Servidor HTTP que sirve el index.html
-const server = http.createServer((req, res) => {
-  fs.readFile("index.html", (err, data) => {
-    if (err) { res.writeHead(404); return res.end("No encontrado"); }
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.end(data);
-  });
-});
-
-const wss = new WebSocket.Server({ server });
