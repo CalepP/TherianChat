@@ -59,3 +59,15 @@ db.run('INSERT INTO mensajes (username, texto, hora) VALUES (?, ?, ?)',
 broadcast(msg); 
 } 
 }); 
+
+// ── GABRIEL TORRICO ────────────────────────────────── 
+  // Cuando un usuario se desconecta 
+  ws.on('close', () => { 
+    broadcast({ tipo: 'sistema', 
+      texto: `${ws.username} salio`, 
+      usuarios: usuariosConectados() }); 
+  }); 
+}); 
+// Arrancar el servidor en el puerto 3000 
+server.listen(PORT, () => console.log(`🚀 TherianChat en 
+http://localhost:${PORT}`));  
