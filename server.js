@@ -29,7 +29,6 @@ const server = http.createServer((req, res) => {
 
 const wss = new WebSocket.Server({ server });
 
-
 // ── KENDRY ARDAYA ────────────────────────────────── 
   // Cuando un usuario envia un mensaje 
   ws.on('message', (raw) => { 
