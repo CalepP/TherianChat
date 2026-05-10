@@ -28,3 +28,35 @@ const server = http.createServer((req, res) => {
 });
 
 const wss = new WebSocket.Server({ server });
+
+
+// ── KENDRY ARDAYA ────────────────────────────────── 
+  // Cuando un usuario envia un mensaje 
+  ws.on('message', (raw) => { 
+    const data = JSON.parse(raw); 
+ 
+    // Cambiar nombre de usuario 
+    if (data.tipo === 'renombrar' && data.username?.trim()) { 
+      const anterior = ws.username; 
+      ws.username = data.username.trim().slice(0, 20); 
+      broadcast({ tipo: 'sistema', 
+        texto: `${anterior} ahora es ${ws.username} ✏`, 
+        usuarios: usuariosConectados() }); 
+      enviar(ws, { tipo: 'renombrado', username: ws.username }); 
+    } 
+ 
+    // Guardar y transmitir mensaje de chat 
+    if (data.tipo === 'mensaje' && data.texto?.trim()) { 
+      const msg = { 
+        tipo: 'mensaje', 
+        username: ws.username, 
+        texto: data.texto.trim().slice(0, 500), 
+        hora: new Date().toLocaleTimeString('es-BO', 
+          { hour: '2-digit', minute: '2-digit' }), 
+}; 
+// Guardar en base de datos SQLite 
+db.run('INSERT INTO mensajes (username, texto, hora) VALUES (?, ?, ?)', 
+[msg.username, msg.texto, msg.hora]); 
+broadcast(msg); 
+} 
+}); 
