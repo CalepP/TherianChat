@@ -29,6 +29,26 @@ const server = http.createServer((req, res) => {
 
 const wss = new WebSocket.Server({ server });
 
+
+// ── RIMER BRAYAN CESPEDES GUTIERREZ ──────────────────────────────────
+// Cuando un usuario se conecta 
+wss.on('connection', (ws) => {
+  ws.username = `Usuario_${++userCount}`;
+  // Cargar historial desde la base de datos 
+  db.all('SELECT * FROM (SELECT * FROM mensajes ORDER BY id DESC LIMIT 50) ORDER BY id ASC',
+         (err, filas) => { 
+           const historial = filas ? filas.map(f => ({
+             tipo: 'mensaje', username: f.username,
+             texto: f.texto, hora: f.hora
+           })) : [];
+           enviar(ws, { tipo: 'historial', mensajes: historial });
+           } 
+          ); 
+   enviar(ws, { tipo: 'bienvenida', username: ws.username });
+   broadcast({ tipo: 'sistema', texto: `${ws.username} se unio 👋 `, usuarios:
+  usuariosConectados() });
+  
+
 // ── KENDRY ARDAYA ────────────────────────────────── 
   // Cuando un usuario envia un mensaje 
   ws.on('message', (raw) => { 
