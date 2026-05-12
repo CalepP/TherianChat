@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/27571402/README.md)
+[README (1).md](https://github.com/user-attachments/files/27618289/README.1.md)
 # 💬 TherianChat
 
 > 🔗 Sistema de Chat Colaborativo en tiempo real · Comunicación instantánea y simultánea entre múltiples usuarios · Sistemas Colaborativos 🎓
@@ -132,19 +132,18 @@ http://localhost:3000
 
 | Integrante | Contribución |
 |---|---|
-| Nombre 1 | Servidor base + configuración inicial |
-| Nombre 2 | Funciones broadcast y lista de usuarios |
-| Nombre 3 | Evento de conexión e historial |
-| Nombre 4 | Evento de mensajes + guardado en SQLite |
-| Nombre 5 | Evento de desconexión + arranque del servidor |
-| Nombre 6 | Interfaz HTML y estilos CSS |
-| Nombre 7 | Lógica WebSocket del cliente + README |
+| Calep Patiño | Servidor base + configuración inicial + Base de datos + Interfaz HTML |
+| Kendry Ardaya | Evento de mensajes + guardado en SQLite |
+| Gabriel Torrico | Evento de desconexión + arranque del servidor |
+| Rimer Céspedes | Evento de conexión e historial |
+| Josue Huaylla | Funciones broadcast y lista de usuarios |
+| Limberg Huanca | Lógica WebSocket del cliente |
 
 ---
 
 ## 📋 Tablero Trello
 
-🔗 [Ver tablero del Sprint](https://trello.com/aqui-el-link)
+🔗 [Ver tablero del Sprint](https://trello.com/invite/b/6a028ac4948d18815b04f037/ATTI3e6b49dcfc4f437dc2cac101bb870477AD1B5BCA/therianchat-sprint-1)
 
 ---
 
